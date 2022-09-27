@@ -460,7 +460,7 @@ class function_buttons:
                 ])
             ])
             )
-        resp1 = await self.client.wait_for("interaction", check=lambda i:"language_" in i.data.get("values")[0] and interaction.user.id == i.user.id and i.type == discord.InteractionType.component and i.data.get["component_type"] == 3, timeout=600)
+        resp1 = await self.client.wait_for("interaction", check=lambda i:"language_" in i.data["values"][0] and interaction.user.id == i.user.id and i.type == discord.InteractionType.component and i.data["component_type"] == 3, timeout=600)
         language = resp1.data.get("values")[0].split("_")
         if language[1] == "UA":
             embed = discord.Embed(title="Правда чи дія", colour=discord.Color.green())
