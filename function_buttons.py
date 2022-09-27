@@ -445,7 +445,7 @@ class function_buttons:
             view=self.GetView([Button(style=ButtonStyle.blurple, label="Start", custom_id="start_truth_or_dare")])
         )
         try:
-            resp = await self.client.wait_for("interaction", check=lambda i:i.data["custom_id"] == "start_truth_or_dare" and interaction.user.id == i.user.id and i.type == discord.InteractionType.component and i.data.get("component_type") == 2, timeout=600)
+            resp = await self.client.wait_for("interaction", check=lambda i:i.data["custom_id"] == "start_truth_or_dare" and interaction.user.id == i.user.id and i.type == discord.InteractionType.component and i.data["component_type"] == 2, timeout=600)
         except asyncio.TimeoutError:
             await interaction.response.edit_message(embed=discord.Embed(title="Truth Or Dare", description="timeout", colour=discord.Color.red()))
             await asyncio.sleep(5)
@@ -460,7 +460,7 @@ class function_buttons:
                 ])
             ])
             )
-        resp1 = await self.client.wait_for("interaction", check=lambda i:"language_" in i.data.get("values")[0] and interaction.user.id == i.user.id and i.type == discord.InteractionType.component and i.data.get("component_type") == 3, timeout=600)
+        resp1 = await self.client.wait_for("interaction", check=lambda i:"language_" in i.data.get("values")[0] and interaction.user.id == i.user.id and i.type == discord.InteractionType.component and i.data.get["component_type"] == 3, timeout=600)
         language = resp1.data.get("values")[0].split("_")
         if language[1] == "UA":
             embed = discord.Embed(title="Правда чи дія", colour=discord.Color.green())
